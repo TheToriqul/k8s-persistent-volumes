@@ -2,5 +2,5 @@ apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshotClass
 metadata:
   name: standard-snapclass
-driver: ebs.csi.aws.com
+driver: local-path.csi.k3s.io  # Changed for k3s
 deletionPolicy: Delete

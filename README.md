@@ -21,36 +21,13 @@ This project represents my comprehensive exploration of Kubernetes storage manag
 - Build practical examples for real-world scenarios
 
 ## 🏗️ Project Architecture
-In this Kubernetes storage architecture, the Administrator creates a Persistent Volume (PV db-pv) with 1Gi capacity, while the Developer creates a Persistent Volume Claim (PVC db-pvc) requesting 256Mi of that storage. The PVC acts as a binding request to the PV, and once bound, a Pod can mount this storage to persist data in the underlying storage path (/data/db).
 
-```mermaid
-graph LR
-    subgraph Kubernetes[Kubernetes Cluster]
-        Admin[Administrator] -->|Creates| PV[PV db-pv]
-        style Admin fill:#e1f5fe,stroke:#01579b
-        style PV fill:#b2dfdb,stroke:#004d40
-        
-        Dev[Developer] -->|Creates| PVC[PVC db-pvc]
-        style Dev fill:#e1f5fe,stroke:#01579b
-        style PVC fill:#c8e6c9,stroke:#1b5e20
-        
-        Pod[Pod] -->|Mounts| PVC
-        style Pod fill:#f3e5f5,stroke:#4a148c
-        
-        PVC -->|Claims 256Mi| PV
-        PV -->|Provides 1Gi| PVC
-    end
-    
-    subgraph Storage[Storage]
-        Path[data/db]
-        style Path fill:#ffecb3,stroke:#ff6f00
-    end
-    
-    Path -->|Provides| PV
-    
-    style Kubernetes fill:#f5f5f5,stroke:#212121
-    style Storage fill:#fafafa,stroke:#212121
-```
+<figure>
+  <p align="center">
+      <img src="./architecture.png" alt="Kubernetes Storage Architecture" />
+      <p align="center">Kubernetes Storage Architecture: Shows the relationship between Persistent Volumes (PV), Persistent Volume Claims (PVC), and Volume Snapshots in a cluster, demonstrating how storage components interact from Administrator provisioning to Developer usage.</p> 
+  </p>
+</figure>
 
 ## 💻 Technical Stack
 
